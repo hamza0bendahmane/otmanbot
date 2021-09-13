@@ -37,7 +37,7 @@ client.connect(err => {
   db = client.db('refbot')
   bot.startWebhook('/refbot', null, 2104)
    bot.startPolling()
-  //client.close();
+  client.close();
 });
 
 
