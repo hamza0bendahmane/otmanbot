@@ -91,6 +91,8 @@ bot.hears(/^\/start (.+[1-9]$)/, async (ctx) => {
 
 bot.start(async (ctx) => {
   try {
+    console.log("cdd",ctx.match[0])
+    console.log("cdd",ctx.match[1])
     ctx.reply(
       text.hello + ctx.from.id,
       Extra
@@ -326,8 +328,7 @@ bot.action('get_number', async (ctx) => {
   }
 })
 
-getNumber.hears(/^.+213[0-9]{9}$/, async (ctx) => { // replace 998 to your country`s code or turn off regexp
-  ctx.reply('Your room number is: ' + ctx.message.text,
+getNumber.hears(/^.+213[0-9]{9}$/, async (ctx) => {   ctx.reply('Your room number is: ' + ctx.message.text,
     Extra
     .markup(Markup.inlineKeyboard([
       [Markup.callbackButton('◀️ Back', 'main'), Markup.callbackButton('🖊 Edit', 'get_number')]
