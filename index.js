@@ -137,11 +137,11 @@ bot.action('balance', async (ctx) => {
     if (thisUsersData[0].payments === 0) {
       payments = ''
     } else {
-      payments = '\nУже выплачено: ' + thisUsersData[0].payments
+      payments = '\nAlready paid: ' + thisUsersData[0].payments
     }
   
     ctx.editMessageText(
-      'You balance now: ' + sum + ' {currency}. You`ve invited ' + allRefs.length + ' persons.' + payments,
+      'You balance now: ' + sum + ' DZD. You`ve invited ' + allRefs.length + ' persons.' + payments,
       Extra
       .markup(Markup.inlineKeyboard([
         [Markup.callbackButton('◀️ Back', 'main'), Markup.callbackButton('💸 Withdraw', 'withdraw')]
@@ -309,10 +309,10 @@ bot.action('get_number', async (ctx) => {
     ctx.scene.enter('getNumber')
   
     ctx.editMessageText(
-      'Enter your number in form +998971234567:',
+      'Enter your number in form +213551234567:',
       Extra
       .markup(Markup.inlineKeyboard([
-        [Markup.callbackButton('◀️ Отменить', 'number')]
+        [Markup.callbackButton('◀️ Cancel', 'number')]
       ]))
       )
         .catch((err) => sendError(err, ctx))
@@ -322,7 +322,7 @@ bot.action('get_number', async (ctx) => {
 })
 
 getNumber.hears(/^.+998[0-9]{9}$/, async (ctx) => { // replace 998 to your country`s code or turn off regexp
-  ctx.reply('Ваш номер: ' + ctx.message.text,
+  ctx.reply('Your room number is: ' + ctx.message.text,
     Extra
     .markup(Markup.inlineKeyboard([
       [Markup.callbackButton('◀️ Back', 'main'), Markup.callbackButton('🖊 Edit', 'get_number')]
