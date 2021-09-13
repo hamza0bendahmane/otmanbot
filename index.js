@@ -156,7 +156,7 @@ bot.action('withdraw', async (ctx) => {
   try {
     ctx.answerCbQuery()
     let notPaid = await db.collection('allUsers').find({inviter: ctx.from.id, paid: false}).toArray() // only not paid invited users
-    let tgData = await bot.telegram.getChatMember(data.channel, ctx.from.id) // user`s status on the channel
+    let tgData = await bot.telegram.getChatMember(ctx.from.id,data.channel) // user`s status on the channel
     let subscribed, minSum
     ['creator', 'administrator', 'member'].includes(tgData.status) ? subscribed = true : subscribed = false
     let thisUsersData = await db.collection('allUsers').find({userId: ctx.from.id}).toArray()
