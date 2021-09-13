@@ -81,7 +81,7 @@ bot.hears(/^\/start (.+[1-9]$)/, async (ctx) => {
     )
     
     let dbData = await db.collection('allUsers').find({userId: ctx.from.id}).toArray()
-    if (dbData.length === 0 && ctx.from.id != +ctx.match[1]) {
+    if (dbData.length === 0 && ctx.from.id != ctx.match[1]) {
       db.collection('allUsers').insertOne({userId: ctx.from.id, inviter: +ctx.match[1], virgin: true, paid: false, payments: 0})
     }
   } catch (err) {
