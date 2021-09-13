@@ -1,4 +1,5 @@
 const telegraf = require('telegraf')
+const express = require('express')
 const config = require('./config')
 const data = require('./data')
 const mongo = require('mongodb').MongoClient
@@ -13,7 +14,11 @@ const rateLimit = require('telegraf-ratelimit')
 const { text } = config
 const bot = new telegraf(data.token, {telegram: {webhookReply: false}})
 let db 
-
+const app = express();
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
 const buttonsLimit = {
   window: 1000,
   limit: 1,
