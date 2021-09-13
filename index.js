@@ -31,7 +31,8 @@ bot.use(rateLimit(buttonsLimit))
 
 
 const uri = "mongodb+srv://botuser:botBOT99@cluster0.ukkqd.mongodb.net/refbot?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
+const client = new MongoClient(uri, { useUnifiedTopology: true}, { useNewUrlParser: true }, { connectTimeoutMS: 30000 }, { keepAlive: 1});
+
 client.connect(err => {
   // perform actions on the collection object
   db = client.db('refbot')
