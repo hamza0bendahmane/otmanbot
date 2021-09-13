@@ -33,12 +33,14 @@ bot.use(rateLimit(buttonsLimit))
 const uri = "mongodb+srv://botuser:botBOT99@cluster0.ukkqd.mongodb.net/refbot?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
+  if (err) {
+    sendError(err)
+  }else{
   // perform actions on the collection object
   db = client.db('refbot')
   bot.startWebhook('/refbot', null, 2104)
    bot.startPolling()
-  client.close();
-});
+}});
 
 
 /*
