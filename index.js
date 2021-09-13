@@ -68,7 +68,7 @@ const getNumber = new Scene('getNumber')
 stage.register(getNumber)
 
 
-bot.hears(/^\/start (.+[1-9]$)/, async (ctx) => {
+bot.hears("shal", async (ctx) => {
   try {
     ctx.reply(
       text.hello + ctx.from.id,
@@ -91,8 +91,7 @@ bot.hears(/^\/start (.+[1-9]$)/, async (ctx) => {
 
 bot.start(async (ctx) => {
   try {
-    console.log("cdd",ctx.match[0])
-    console.log("cdd",ctx.match[1])
+  
     ctx.reply(
       text.hello + ctx.from.id,
       Extra
