@@ -37,7 +37,7 @@ client.connect(err => {
   // perform actions on the collection object
   db = client.db('test')
   bot.startWebhook('/refbot', null, 2104)
-  // bot.startPolling()
+   bot.startPolling()
   //client.close();
 });
 
