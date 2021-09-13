@@ -30,12 +30,11 @@ bot.use(rateLimit(buttonsLimit))
 
 
 
-const uri = "mongodb+srv://botuser:botBOT99@cluster0.ukkqd.mongodb.net/refbot?retryWrites=true&w=majority";
+const uri = "mongodb+srv://botuser:botBOT99@cluster0.ukkqd.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
-  const collection = client.db("test").collection("devices");
   // perform actions on the collection object
-  db = client.db('refbot')
+  db = client.db('test')
   bot.startWebhook('/refbot', null, 2104)
    bot.startPolling()
   //client.close();
@@ -156,7 +155,7 @@ bot.action('withdraw', async (ctx) => {
   try {
     ctx.answerCbQuery()
     let notPaid = await db.collection('allUsers').find({inviter: ctx.from.id, paid: false}).toArray() // only not paid invited users
-    let tgData = await bot.telegram.getChatMember(ctx.from.id,data.channel) // user`s status on the channel
+    let tgData = await bot.telegram.getChatMember(data.channel,ctx.from.id) // user`s status on the channel
     let subscribed, minSum
     ['creator', 'administrator', 'member'].includes(tgData.status) ? subscribed = true : subscribed = false
     let thisUsersData = await db.collection('allUsers').find({userId: ctx.from.id}).toArray()
