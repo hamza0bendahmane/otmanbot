@@ -146,7 +146,7 @@ bot.action('balance', async (ctx) => {
     }
   
     ctx.editMessageText(
-      'You balance now: ' + sum + ' DZD. You`ve invited ' + allRefs.length + ' persons.' + payments,
+      'You balance now: ' + sum + ' DZD. You`ve invited ' + ².length + ' persons.' + payments,
       Extra
       .markup(Markup.inlineKeyboard([
         [Markup.callbackButton('◀️ Back', 'main'), Markup.callbackButton('💸 Withdraw', 'withdraw')]
