@@ -8,6 +8,7 @@ const Markup = require('telegraf/markup')
 const session = require('telegraf/session')
 const Stage = require('telegraf/stage')
 const Scene = require('telegraf/scenes/base')
+const { MongoClient } = require('mongodb');
 const rateLimit = require('telegraf-ratelimit')
 const { text } = config
 const bot = new telegraf(data.token, {telegram: {webhookReply: false}})
@@ -29,15 +30,27 @@ bot.use(rateLimit(buttonsLimit))
 
 
 
-mongo.connect("mongodb+srv://botuser:botBOT99@cluster0.ukkqd.mongodb.net/refbot?retryWrites=true&w=majority", {useNewUrlParser: true}, (err, client) => {
+const uri = "mongodb+srv://botuser:botBOT99@cluster0.ukkqd.mongodb.net/refbot?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  // perform actions on the collection object
+  db = client.db('refbot')
+  bot.startWebhook('/refbot', null, 2104)
+   bot.startPolling()
+  //client.close();
+});
+
+
+/*
+mongo.connect(data.mongoLink, {useNewUrlParser: true}, (err, client) => {
   if (err) {
     sendError(err)
   }
 
-  db = client.db('refbot')
+  db = client.db('test')
   bot.startWebhook('/refbot', null, 2104)
-   bot.startPolling()
-})
+  // bot.startPolling()
+})*/
 
 
 const stage = new Stage()
