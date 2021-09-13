@@ -326,7 +326,7 @@ bot.action('get_number', async (ctx) => {
   }
 })
 
-getNumber.hears(/^.+998[0-9]{9}$/, async (ctx) => { // replace 998 to your country`s code or turn off regexp
+getNumber.hears(/^.+213[0-9]{9}$/, async (ctx) => { // replace 998 to your country`s code or turn off regexp
   ctx.reply('Your room number is: ' + ctx.message.text,
     Extra
     .markup(Markup.inlineKeyboard([

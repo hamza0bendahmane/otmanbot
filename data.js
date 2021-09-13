@@ -5,6 +5,6 @@ module.exports = {
   chanLink: 't.me/invitchan', // can get this in channel`s settings
   paymentsChan: 'paayc', // test chan
   inviteLink: 't.me/otmanPubgBot?start=params', // params - only user id or something extra
-  admins: ['hamza_hb'], //TODO: add the id here
-  kh: 'hamza_hb'
+  admins: ['@hamza_hb'], //TODO: add the id here
+  kh: '@hamza_hb'
 }
